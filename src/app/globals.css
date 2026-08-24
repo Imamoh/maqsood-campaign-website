@@ -1,0 +1,395 @@
+@import "tailwindcss";
+
+/* ==================================================================
+   CAMPAIGN DESIGN TOKENS
+   Adjust colours here; every component reads from these variables.
+   ================================================================== */
+@theme {
+  --color-navy: #0b1f3a;
+  --color-navy-700: #122c4f;
+  --color-navy-500: #1d3d68;
+  --color-civic: #145da0;
+  --color-civic-deep: #0f4a80;
+  --color-cream: #f7f4ee;
+  --color-cream-deep: #efe9df;
+  --color-ink: #16233a;
+  --color-slate: #4a5568;
+  --color-rule: #d9d2c6; /* decorative dividers only */
+  --color-field: #8c8578; /* form control borders — meets WCAG 1.4.11 (3:1) */
+  --color-signal: #c62828;
+  --color-signal-deep: #a01e1e;
+  --color-brass: #a8842c;
+
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", monospace;
+}
+
+/* ==================================================================
+   BASE
+   ================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header offset for in-page anchors */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-navy);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible focus for every interactive element, including keyboard-only. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--color-civic);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-navy);
+    color: #fff;
+  }
+}
+
+/* ==================================================================
+   TYPOGRAPHY UTILITIES
+   ================================================================== */
+@layer components {
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.4rem, 6.2vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+  }
+
+  .display-lg {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .display-md {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+    line-height: 1.15;
+  }
+
+  .lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--color-slate);
+  }
+
+  /* --------------------------------------------------------------
+     SIGNATURE MOTIF — "the line"
+     A transit-style rule with station dots. Used as a section marker.
+     Decorative only: always aria-hidden where rendered.
+     -------------------------------------------------------------- */
+  .transit-rule {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    opacity: 0.28;
+    position: relative;
+  }
+  .transit-rule::before,
+  .transit-rule::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-cream);
+    border: 2px solid currentColor;
+    transform: translateY(-50%);
+  }
+  .transit-rule::before {
+    left: 0;
+  }
+  .transit-rule::after {
+    left: 34%;
+  }
+
+  /* Faint street-grid texture for navy panels. */
+  .street-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  /* --------------------------------------------------------------
+     BUTTONS — 44px minimum target height throughout
+     -------------------------------------------------------------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.75rem 1.35rem;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: 0.005em;
+    text-align: center;
+    border: 2px solid transparent;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease,
+      transform 0.18s ease;
+  }
+
+  .btn-primary {
+    background: var(--color-signal);
+    color: #fff;
+    border-color: var(--color-signal);
+  }
+  .btn-primary:hover {
+    background: var(--color-signal-deep);
+    border-color: var(--color-signal-deep);
+  }
+
+  .btn-navy {
+    background: var(--color-navy);
+    color: #fff;
+    border-color: var(--color-navy);
+  }
+  .btn-navy:hover {
+    background: var(--color-navy-700);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-navy);
+    border-color: var(--color-navy);
+  }
+  .btn-outline:hover {
+    background: var(--color-navy);
+    color: #fff;
+  }
+
+  .btn-outline-light {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.55);
+  }
+  .btn-outline-light:hover {
+    background: #fff;
+    color: var(--color-navy);
+    border-color: #fff;
+  }
+
+  /* --------------------------------------------------------------
+     FORM CONTROLS
+     -------------------------------------------------------------- */
+  .field-input {
+    width: 100%;
+    min-height: 48px;
+    background: #fff;
+    border: 1.5px solid var(--color-field);
+    border-radius: 3px;
+    padding: 0.7rem 0.85rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--color-ink);
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .field-input::placeholder {
+    color: #8a8578;
+  }
+  .field-input:hover {
+    border-color: var(--color-navy-500);
+  }
+  .field-input:focus {
+    border-color: var(--color-civic);
+    box-shadow: 0 0 0 3px rgba(20, 93, 160, 0.16);
+  }
+  .field-input[aria-invalid="true"] {
+    border-color: var(--color-signal);
+    background: #fdf7f7;
+  }
+  textarea.field-input {
+    min-height: 8rem;
+    resize: vertical;
+  }
+  select.field-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%2316233a' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
+  }
+
+  .field-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin-bottom: 0.35rem;
+  }
+
+  .field-hint {
+    font-size: 0.82rem;
+    color: var(--color-slate);
+    margin-top: 0.3rem;
+  }
+
+  .field-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-signal-deep);
+    margin-top: 0.35rem;
+  }
+
+  /* Honeypot: off-screen, not display:none, and hidden from AT. */
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .prose-campaign p {
+    margin-bottom: 1.05rem;
+    color: var(--color-slate);
+    font-size: 1.03rem;
+    line-height: 1.72;
+  }
+  .prose-campaign p:last-child {
+    margin-bottom: 0;
+  }
+  .prose-campaign h2 {
+    margin-top: 2.4rem;
+    margin-bottom: 0.7rem;
+    font-size: 1.4rem;
+  }
+  .prose-campaign h3 {
+    margin-top: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.12rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+  }
+  .prose-campaign ul {
+    list-style: none;
+    margin: 0 0 1.05rem;
+    padding: 0;
+  }
+  .prose-campaign li {
+    position: relative;
+    padding-left: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-slate);
+    line-height: 1.65;
+  }
+  .prose-campaign li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-civic);
+  }
+  .prose-campaign a {
+    color: var(--color-civic-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-campaign a:hover {
+    color: var(--color-navy);
+  }
+}
+
+/* ==================================================================
+   MOTION — restrained, and fully optional
+   ================================================================== */
+@layer utilities {
+  .reveal {
+    animation: reveal-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Windows High Contrast / forced colours: keep borders visible. */
+@media (forced-colors: active) {
+  .btn,
+  .field-input {
+    border: 2px solid ButtonText;
+  }
+}
