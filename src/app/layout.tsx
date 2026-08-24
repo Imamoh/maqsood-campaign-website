@@ -15,7 +15,7 @@ const description =
   "Maqsood Ahmad is a candidate for Toronto City Council in Ward 14 — Toronto–Danforth. A long-time resident of about 25 years and a real estate professional with practical housing and construction knowledge. Election day is October 26, 2026.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(campaign.contact.siteUrl),
+  metadataBase: new URL(campaign.contact.siteUrl || "https://electmaqsood.com"),
   title: {
     default: "Maqsood Ahmad for Ward 14 | Toronto–Danforth",
     template: "%s | Maqsood Ahmad for Ward 14",
