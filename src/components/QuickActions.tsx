@@ -4,7 +4,7 @@ import { campaign } from "@/data/campaign";
 const actions = [
   {
     label: "Share a neighbourhood concern",
-    detail: "Tell the campaign what needs attention on your street.",
+    detail: "Share what needs attention on your street.",
     href: "#your-voice",
     Icon: MessageSquare,
   },

@@ -7,7 +7,7 @@ export function CampaignFooter() {
   const { contact, candidate, election, authorization } = campaign;
 
   return (
-    <footer className="band-navy border-t-[3px] border-red bg-navy text-white/80">
+    <footer className="band-navy border-t-[3px] border-signal bg-navy text-white/80">
       {/* Extra bottom padding on small screens clears the fixed mobile action bar. */}
       <div className="mx-auto max-w-6xl px-4 pt-12 pb-28 sm:px-6 lg:pt-16 lg:pb-16">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
@@ -29,9 +29,12 @@ export function CampaignFooter() {
             <ul className="mt-4 flex flex-col gap-1">
               {campaign.navigation.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="inline-block py-2 text-[0.95rem] hover:text-white">
+                  <Link
+                    href={item.href.startsWith("#") ? `/${item.href}` : item.href}
+                    className="inline-block py-2 text-[0.95rem] hover:text-white"
+                  >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -1,10 +1,47 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { campaign } from "@/data/campaign";
 import { CampaignWordmark } from "./CampaignWordmark";
+
+/**
+ * Navigation now mixes in-page anchors ("#about") with a real route
+ * ("/gig-workers"). Anchors stay plain <a> so they work without JavaScript;
+ * routes use <Link> for client-side navigation and prefetching.
+ */
+function NavItem({
+  href,
+  className,
+  onClick,
+  children,
+}: {
+  href: string;
+  className?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+
+  // An in-page anchor only works on the page that contains the section. From
+  // any other route (e.g. /gig-workers) it must resolve to the home page first.
+  const resolved = href.startsWith("#") && pathname !== "/" ? `/${href}` : href;
+
+  if (resolved.startsWith("/")) {
+    return (
+      <Link href={resolved} className={className} onClick={onClick}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={resolved} className={className} onClick={onClick}>
+      {children}
+    </a>
+  );
+}
 
 export function CampaignHeader() {
   const [open, setOpen] = useState(false);
@@ -64,30 +101,30 @@ export function CampaignHeader() {
   }, [open]);
 
   return (
-    <header className="band-navy sticky top-0 z-50 border-b-[3px] border-red bg-navy">
-      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+    <header className="sticky top-0 z-50 border-b-[3px] border-signal bg-white">
+      <div className="mx-auto flex h-[76px] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
           className="flex items-center py-2"
           aria-label={`${campaign.candidate.name} for ${campaign.candidate.ward} — home`}
         >
-          <CampaignWordmark tone="light" size="md" />
+          <CampaignWordmark size="md" />
         </Link>
 
         {/* Desktop navigation */}
         <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
           {campaign.navigation.map((item) => (
-            <a
+            <NavItem
               key={item.href}
               href={item.href}
-              className="rounded-sm px-3 py-2.5 text-[0.92rem] font-medium text-white/85 transition-colors hover:text-white"
+              className="rounded-sm px-3 py-2.5 text-[0.92rem] font-medium text-navy transition-colors hover:text-signal"
             >
               {item.label}
-            </a>
+            </NavItem>
           ))}
-          <a href="#lawn-sign" className="btn btn-primary ml-3 !min-h-[44px] !py-2 text-[0.9rem]">
+          <NavItem href="#lawn-sign" className="btn btn-primary ml-3 !min-h-[44px] !py-2 text-[0.9rem]">
             Request a lawn sign
-          </a>
+          </NavItem>
         </nav>
 
         {/* Mobile menu button */}
@@ -97,7 +134,7 @@ export function CampaignHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="-mr-2 flex h-12 w-12 items-center justify-center rounded-sm text-white lg:hidden"
+          className="-mr-2 flex h-12 w-12 items-center justify-center rounded-sm text-navy lg:hidden"
         >
           {open ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
@@ -107,31 +144,31 @@ export function CampaignHeader() {
       {/* Mobile overlay menu */}
       {open && (
         <div
-          className="band-navy fixed inset-x-0 top-[72px] bottom-0 z-50 bg-navy lg:hidden"
+          className="fixed inset-x-0 top-[76px] bottom-0 z-50 bg-white lg:hidden"
           id="mobile-menu"
         >
           <div ref={panelRef} className="flex h-full flex-col overflow-y-auto px-4 pt-2 pb-10">
             <nav aria-label="Primary mobile" className="flex flex-col">
               {campaign.navigation.map((item) => (
-                <a
+                <NavItem
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="border-b border-white/15 py-4 text-lg font-medium text-white"
+                  className="border-b border-rule py-4 text-lg font-medium text-navy"
                 >
                   {item.label}
-                </a>
+                </NavItem>
               ))}
             </nav>
             <div className="mt-6 flex flex-col gap-3">
-              <a href="#lawn-sign" onClick={() => setOpen(false)} className="btn btn-primary w-full">
+              <NavItem href="#lawn-sign" onClick={() => setOpen(false)} className="btn btn-primary w-full">
                 Request a lawn sign
-              </a>
-              <a href="#your-voice" onClick={() => setOpen(false)} className="btn btn-outline-light w-full">
+              </NavItem>
+              <NavItem href="#your-voice" onClick={() => setOpen(false)} className="btn btn-outline w-full">
                 Share a concern
-              </a>
+              </NavItem>
             </div>
-            <p className="label-mono mt-8 text-white/70">
+            <p className="label-mono mt-8 text-slate">
               Election day · {campaign.election.shortDateLabel}
             </p>
           </div>

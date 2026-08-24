@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { campaign } from "@/data/campaign";
 import { ISSUE_CATEGORIES, LIMITS } from "@/lib/validation";
@@ -30,6 +30,19 @@ export function ListeningForm() {
   const formRef = useRef<HTMLFormElement>(null);
   useFocusFirstError(errors, formRef);
 
+  /**
+   * Deep links such as /?category=gig-worker#your-voice preselect the issue
+   * category. The form is fully usable without this — it only sets a default.
+   */
+  useEffect(() => {
+    const key = new URLSearchParams(window.location.search).get("category");
+    if (!key) return;
+    const match = ISSUE_CATEGORIES.find(
+      (c) => c.toLowerCase().replace(/[^a-z]+/g, "-").includes(key.toLowerCase()),
+    );
+    if (match) setValues((v) => (v.category ? v : { ...v, category: match }));
+  }, []);
+
   const set = <K extends keyof typeof initial>(key: K, value: (typeof initial)[K]) =>
     setValues((v) => ({ ...v, [key]: value }));
 
@@ -58,7 +71,7 @@ export function ListeningForm() {
           </h2>
           <p className="mt-5 max-w-[46ch] text-[1.05rem] leading-relaxed text-white/80">
             What is happening on your street, in your building, or across your neighbourhood? Tell
-            Maqsood what City Hall should be paying attention to — the specific things, not the
+            us what City Hall should be paying attention to — the specific things, not the
             general ones.
           </p>
           <p className="mt-6 max-w-[46ch] text-[0.92rem] leading-relaxed text-white/60">
@@ -166,7 +179,7 @@ export function ListeningForm() {
             </Field>
 
             <Field
-              label="Tell Maqsood what is going on"
+              label="What would you like to share?"
               name="message"
               required
               error={errors.message}

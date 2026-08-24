@@ -53,7 +53,7 @@ export const campaign = {
     identity: "Maqsood Ahmad for Toronto City Council",
     supporting:
       "Maqsood Ahmad is a long-time Ward 14 resident bringing practical housing and construction knowledge — and a commitment to listening, accountability and respect for working people — to City Hall.",
-    primaryCta: { label: "Share your priorities", href: "#your-voice" },
+    primaryCta: { label: "Share what matters to you", href: "#your-voice" },
     secondaryCta: { label: "Join the campaign", href: "#get-involved" },
     trust: [
       "25 years in Ward 14",
@@ -117,14 +117,14 @@ export const campaign = {
     },
     {
       id: "fairness-for-gig-workers",
-      title: "Fairness for Gig Workers",
+      // Homepage preview only. The full statement lives at /gig-workers.
+      title: "A Voice for Gig Workers",
       summary:
-        "Rideshare and delivery workers move this city every day, often with little say in the decisions that shape their work.",
+        "Rideshare drivers, delivery workers and other gig workers help keep Toronto moving every day. Yet many are struggling to earn a decent living despite working long hours.",
       icon: "car",
       feature: true,
       detail: [
-        "Maqsood wants their concerns raised at City Hall: fair treatment, dignity, and a voice in decisions that affect their livelihoods.",
-        "This is a distinctive part of the campaign because these are neighbours too — people who live in Ward 14 and are too often talked about rather than talked with.",
+        "Workers deserve fair compensation, transparent deductions, protection from unfair deactivations and a meaningful voice in decisions affecting their livelihoods.",
       ] as readonly string[],
     },
     {
@@ -150,6 +150,7 @@ export const campaign = {
   navigation: [
     { label: "About", href: "#about" },
     { label: "Priorities", href: "#priorities" },
+    { label: "Gig Workers", href: "/gig-workers" },
     { label: "Your Voice", href: "#your-voice" },
     { label: "Get Involved", href: "#get-involved" },
     { label: "Contact", href: "#contact" },

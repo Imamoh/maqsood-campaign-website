@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Shield, Home, Receipt, Car, Store, Ear } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { campaign } from "@/data/campaign";
@@ -22,7 +23,7 @@ export function Priorities() {
   const FeatureIcon = feature ? icons[feature.icon] : null;
 
   return (
-    <section id="priorities" aria-labelledby="priorities-heading" className="scroll-mt-24 bg-panel">
+    <section id="priorities" aria-labelledby="priorities-heading" className="scroll-mt-24 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
         <div className="max-w-2xl">
           <p className="label-mono text-civic-deep">What he will focus on</p>
@@ -70,9 +71,14 @@ export function Priorities() {
                     {d}
                   </p>
                 ))}
-                <a href="#your-voice" className="btn btn-primary mt-8">
-                  Tell him what you are dealing with
-                </a>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <Link href="/gig-workers" className="btn btn-primary">
+                    Read the Gig Worker Plan
+                  </Link>
+                  <a href="#your-voice" className="btn btn-outline">
+                    Share Your Experience
+                  </a>
+                </div>
               </div>
             </div>
           </div>

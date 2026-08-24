@@ -14,10 +14,10 @@ export function Hero() {
   const { hero, candidate, election, portrait } = campaign;
 
   return (
-    <section className="relative overflow-hidden border-b border-rule bg-cream" aria-labelledby="hero-heading">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 pt-10 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14 lg:pt-16 lg:pb-20">
-        {/* ---------- Copy ---------- */}
-        <div className="reveal">
+    <section className="relative overflow-hidden border-b border-rule bg-white" aria-labelledby="hero-heading">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 pt-10 pb-14 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-14 lg:pt-16 lg:pb-20">
+        {/* ---------- Copy (second column on desktop, first on mobile) ---------- */}
+        <div className="reveal order-1 lg:order-2">
           <p className="label-mono text-civic-deep">{hero.eyebrow}</p>
           <span aria-hidden="true" className="transit-rule mt-3 mb-6 max-w-[168px] text-civic" />
 
@@ -54,8 +54,8 @@ export function Hero() {
           </ul>
         </div>
 
-        {/* ---------- Portrait frame ---------- */}
-        <div className="relative">
+        {/* ---------- Portrait frame (left on desktop, so he faces the copy) ---------- */}
+        <div className="relative order-2 lg:order-1">
           <div className="relative aspect-[4/5] w-full overflow-hidden border border-navy/20 bg-navy sm:aspect-[5/6] lg:aspect-[4/5]">
             {portrait.hasPortrait ? (
               <Image
@@ -63,7 +63,7 @@ export function Hero() {
                 alt={portrait.alt}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 46vw"
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 style={{ objectFit: "cover", objectPosition: portrait.objectPosition }}
               />
             ) : (
@@ -97,7 +97,7 @@ export function Hero() {
           </div>
 
           {/* Slogan tab — small, restrained, and offset from the frame */}
-          <p className="label-mono absolute -bottom-3 left-4 bg-signal px-3 py-2 text-white sm:left-6">
+          <p className="label-mono absolute -bottom-3 right-4 bg-signal px-3 py-2 text-white sm:right-6">
             {candidate.slogan}
           </p>
         </div>

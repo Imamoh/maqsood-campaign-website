@@ -4,19 +4,25 @@ type Tone = "navy" | "light";
 type Size = "sm" | "md" | "lg";
 
 /**
- * Code-native typographic wordmark, built on the flyer's lockup:
+ * Code-native campaign wordmark, built on the official badge hierarchy:
  *
- *   VOTE FOR CHANGE                                    (eyebrow, `full` only)
- *   MAQSOOD AHMAD                                      (name)
- *   TORONTO CITY COUNCILLOR | WARD 14—TORONTO–DANFORTH (office line)
+ *   MAQSOOD           navy
+ *   AHMAD             red
+ *   [ WARD 14 ]       white text in a compact navy label
+ *   TORONTO–DANFORTH  navy supporting line
  *
- * The header uses the compact form — a short ward line, no eyebrow — so the
- * lockup and the menu button still fit at 320px. The footer uses `full`, where
- * there is room for all three lines.
+ * On a navy band (tone="light") the same hierarchy inverts: the name is white,
+ * AHMAD is separated by a red rule rather than a pale tint — the badge red is
+ * only 2.3:1 on navy, so tinting it light enough to pass contrast would turn it
+ * pink. The label chip inverts to white with navy text.
  *
- * No image asset, so it stays crisp at any size, works in one colour, and can
- * be swapped for an SVG later by editing this one file. It is deliberately not
- * styled to resemble any City of Toronto mark.
+ * `full` adds the "Vote for Change" slogan line and is used in the footer,
+ * where there is vertical room. No maple leaf is used anywhere: the earlier
+ * brief ruled it out, and one small mark would not survive at header sizes.
+ *
+ * No image asset, so it stays crisp at any size and can be swapped for an SVG
+ * by editing this one file. It is deliberately not styled to resemble any City
+ * of Toronto mark.
  */
 export function CampaignWordmark({
   tone = "navy",
@@ -26,46 +32,67 @@ export function CampaignWordmark({
 }: {
   tone?: Tone;
   size?: Size;
-  /** Show the "Vote for Change" eyebrow and the full office line. */
   full?: boolean;
   className?: string;
 }) {
   const light = tone === "light";
-  const nameColour = light ? "text-white" : "text-navy";
-  const officeColour = light ? "text-white/80" : "text-civic-deep";
-  const eyebrowColour = light ? "text-white/70" : "text-signal";
-  // The brand coral is used here as a solid bar, never as small text.
-  const barColour = light ? "bg-red" : "bg-red";
 
   const scale = {
-    sm: { name: "text-[0.95rem]", sub: "text-[0.55rem]", bar: "h-7" },
-    md: { name: "text-[clamp(0.92rem,3.4vw,1.15rem)]", sub: "text-[0.6rem]", bar: "h-9" },
-    lg: { name: "text-[clamp(1.2rem,4.5vw,1.6rem)]", sub: "text-[0.7rem]", bar: "h-14" },
+    sm: {
+      name: "text-[0.9rem]",
+      chip: "text-[0.5rem] px-1.5 py-[2px]",
+      sub: "text-[0.5rem]",
+      slogan: "text-[0.5rem]",
+    },
+    md: {
+      name: "text-[clamp(0.95rem,3.6vw,1.2rem)]",
+      chip: "text-[0.55rem] px-1.5 py-[2px]",
+      sub: "text-[0.55rem]",
+      slogan: "text-[0.55rem]",
+    },
+    lg: {
+      name: "text-[clamp(1.25rem,4.6vw,1.7rem)]",
+      chip: "text-[0.62rem] px-2 py-[3px]",
+      sub: "text-[0.62rem]",
+      slogan: "text-[0.62rem]",
+    },
   }[size];
 
   return (
-    <span className={`inline-flex min-w-0 items-center gap-2.5 ${className}`}>
-      {/* Decorative rule — echoes the flyer's red bar under the campaign band */}
-      <span aria-hidden="true" className={`${scale.bar} w-[3px] shrink-0 ${barColour}`} />
-
-      <span className="flex flex-col leading-none">
-        {full && (
-          <span className={`label-mono mb-1.5 ${scale.sub} ${eyebrowColour}`}>
-            {campaign.candidate.slogan}
-          </span>
-        )}
-
-        <span
-          className={`font-bold uppercase tracking-[0.13em] ${scale.name} ${nameColour}`}
-          style={{ fontFamily: "var(--font-sans)" }}
-        >
-          {campaign.candidate.name}
+    <span className={`inline-flex min-w-0 flex-col leading-none ${className}`}>
+      {full && (
+        <span className={`label-mono mb-1.5 ${scale.slogan} ${light ? "text-white/70" : "text-signal"}`}>
+          {campaign.candidate.slogan}
         </span>
+      )}
 
-        <span className={`label-mono mt-1.5 ${scale.sub} ${officeColour}`}>
-          {full
-            ? `${campaign.candidate.office} · ${campaign.candidate.wardLong}`
-            : campaign.candidate.wardLong}
+      {/* MAQSOOD / AHMAD — the badge's two-tone name lockup */}
+      <span
+        className={`font-bold uppercase tracking-[0.08em] ${scale.name}`}
+        style={{ fontFamily: "var(--font-sans)" }}
+      >
+        <span className={light ? "text-white" : "text-navy"}>Maqsood</span>{" "}
+        <span className={light ? "text-white" : "text-signal"}>Ahmad</span>
+      </span>
+
+      {/* Accent rule under the name. On navy the badge red drops to 2.3:1 and
+          effectively disappears, so the light variant uses white instead. */}
+      <span
+        aria-hidden="true"
+        className={`mt-1.5 h-[2px] w-10 ${light ? "bg-white/75" : "bg-signal"}`}
+      />
+
+      {/* WARD 14 label + ward supporting line */}
+      <span className="mt-1.5 flex flex-wrap items-center gap-1.5">
+        <span
+          className={`label-mono ${scale.chip} ${
+            light ? "bg-white text-navy" : "bg-navy text-white"
+          }`}
+        >
+          {campaign.candidate.ward}
+        </span>
+        <span className={`label-mono ${scale.sub} ${light ? "text-white/80" : "text-navy"}`}>
+          Toronto–Danforth
         </span>
       </span>
     </span>

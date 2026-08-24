@@ -61,7 +61,7 @@ export function About() {
                 See the priorities
               </a>
               <a href="#your-voice" className="btn btn-navy">
-                Tell him what matters to you
+                Share what matters to you
               </a>
             </div>
           </div>

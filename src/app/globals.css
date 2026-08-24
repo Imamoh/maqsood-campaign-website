@@ -142,34 +142,18 @@
   }
 
   /* --------------------------------------------------------------
-     SIGNATURE MOTIF — "the line"
-     A transit-style rule with station dots. Used as a section marker.
-     Decorative only: always aria-hidden where rendered.
+     ACCENT RULE
+     A short red rule, echoing the bar above the name on the campaign
+     badge. This replaced an abstract "transit line" motif with station
+     dots, which repeated across the site without carrying any campaign
+     meaning. Decorative only: always aria-hidden where rendered.
      -------------------------------------------------------------- */
   .transit-rule {
     display: block;
-    height: 2px;
+    height: 3px;
     width: 100%;
-    background: currentColor;
-    opacity: 0.28;
-    position: relative;
-  }
-  .transit-rule::before,
-  .transit-rule::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: currentColor;
-    transform: translateY(-50%);
-  }
-  .transit-rule::before {
-    left: 0;
-  }
-  .transit-rule::after {
-    left: 34%;
+    max-width: 3.5rem;
+    background: var(--color-signal);
   }
 
   /* Faint street-grid texture for navy panels. */

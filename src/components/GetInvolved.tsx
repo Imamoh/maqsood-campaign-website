@@ -35,7 +35,7 @@ const tabs: { id: TabId; label: string; blurb: string; Icon: LucideIcon; anchor:
   {
     id: "invite",
     label: "Invite Maqsood",
-    blurb: "Ask him to a tenants' meeting, residents' association or community event.",
+    blurb: "Request an appearance at a tenants' meeting, residents' association or community event.",
     Icon: CalendarPlus,
     anchor: "invite",
   },
