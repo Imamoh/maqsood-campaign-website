@@ -65,16 +65,16 @@ function buildBodies(type: FormType, values: Record<string, string>) {
   ].join("\n");
 
   const html = `<div style="font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#16233a;line-height:1.6">
-  <h2 style="margin:0 0 4px;font-size:17px;color:#0b1f3a">${escapeHtml(FORM_LABELS[type])}</h2>
+  <h2 style="margin:0 0 4px;font-size:17px;color:#1d4772">${escapeHtml(FORM_LABELS[type])}</h2>
   <p style="margin:0 0 16px;font-size:13px;color:#4a5568">Submitted through electmaqsood.com</p>
   <table style="border-collapse:collapse;width:100%;max-width:640px">
     ${entries
       .map(
         ([label, value]) => `<tr>
-      <th align="left" style="padding:8px 12px 8px 0;border-bottom:1px solid #e2e0da;vertical-align:top;width:190px;font-size:13px;color:#4a5568;font-weight:600">${escapeHtml(
+      <th align="left" style="padding:8px 12px 8px 0;border-bottom:1px solid #cbdae8;vertical-align:top;width:190px;font-size:13px;color:#4a5568;font-weight:600">${escapeHtml(
         label,
       )}</th>
-      <td style="padding:8px 0;border-bottom:1px solid #e2e0da;font-size:14px;white-space:pre-wrap">${escapeHtml(
+      <td style="padding:8px 0;border-bottom:1px solid #cbdae8;font-size:14px;white-space:pre-wrap">${escapeHtml(
         value,
       )}</td>
     </tr>`,

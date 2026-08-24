@@ -38,7 +38,7 @@ export default async function OpengraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          background: "#0B1F3A",
+          background: "#1D4772",
           color: "#FFFFFF",
           fontFamily: "sans-serif",
         }}
@@ -58,7 +58,7 @@ export default async function OpengraphImage() {
               TORONTO–DANFORTH · WARD 14
             </div>
             <div style={{ display: "flex", marginTop: 20 }}>
-              <div style={{ width: 110, height: 5, background: "#C62828" }} />
+              <div style={{ width: 110, height: 5, background: "#E3433E" }} />
             </div>
           </div>
 

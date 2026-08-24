@@ -7,12 +7,12 @@ export function CampaignFooter() {
   const { contact, candidate, election, authorization } = campaign;
 
   return (
-    <footer className="bg-navy text-white/75">
+    <footer className="band-navy border-t-[3px] border-red bg-navy text-white/80">
       {/* Extra bottom padding on small screens clears the fixed mobile action bar. */}
       <div className="mx-auto max-w-6xl px-4 pt-12 pb-28 sm:px-6 lg:pt-16 lg:pb-16">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <CampaignWordmark tone="light" size="lg" />
+            <CampaignWordmark tone="light" size="lg" full />
             <p className="mt-5 max-w-[34ch] text-[0.92rem] leading-relaxed">
               Candidate for {candidate.office}, {candidate.wardLong}.
             </p>
@@ -25,7 +25,7 @@ export function CampaignFooter() {
           </div>
 
           <nav aria-label="Footer">
-            <h2 className="label-mono text-white/50">This site</h2>
+            <h2 className="label-mono text-white/70">This site</h2>
             <ul className="mt-4 flex flex-col gap-1">
               {campaign.navigation.map((item) => (
                 <li key={item.href}>
@@ -38,7 +38,7 @@ export function CampaignFooter() {
           </nav>
 
           <div>
-            <h2 className="label-mono text-white/50">Election day</h2>
+            <h2 className="label-mono text-white/70">Election day</h2>
             <p className="mt-4 font-semibold text-white">
               <time dateTime={election.isoDate}>{election.dateLabel}</time>
             </p>
@@ -77,7 +77,7 @@ export function CampaignFooter() {
             before the site goes live.
           */}
           <p className="text-white/70">{authorization}</p>
-          <p className="text-white/50">&copy; 2026 {candidate.name} campaign</p>
+          <p className="text-white/70">&copy; 2026 {candidate.name} campaign</p>
         </div>
       </div>
     </footer>

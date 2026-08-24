@@ -34,7 +34,7 @@ export const campaign = {
   contact: {
     email: "campaign@electmaqsood.com",
     domain: "electmaqsood.com",
-    siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://electmaqsood.com",
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://electmaqsood.com",
   },
 
   /**

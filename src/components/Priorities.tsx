@@ -22,7 +22,7 @@ export function Priorities() {
   const FeatureIcon = feature ? icons[feature.icon] : null;
 
   return (
-    <section id="priorities" aria-labelledby="priorities-heading" className="scroll-mt-24 bg-white">
+    <section id="priorities" aria-labelledby="priorities-heading" className="scroll-mt-24 bg-panel">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
         <div className="max-w-2xl">
           <p className="label-mono text-civic-deep">What he will focus on</p>
@@ -46,31 +46,31 @@ export function Priorities() {
 
       {/* ---------- Feature block: gig workers ---------- */}
       {feature && (
-        <div className="street-grid bg-navy">
+        <div className="border-y-[3px] border-red bg-blush">
           <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
               <div>
-                <p className="label-mono text-white/60">Priority 04</p>
-                <span aria-hidden="true" className="transit-rule mt-3 mb-6 max-w-[120px] text-white" />
+                <p className="label-mono text-signal">Priority 04</p>
+                <span aria-hidden="true" className="transit-rule mt-3 mb-6 max-w-[120px] text-civic" />
                 <h3
                   id={feature.id}
-                  className="scroll-mt-24 text-[clamp(1.7rem,3.4vw,2.5rem)] leading-[1.1] font-semibold text-white"
+                  className="scroll-mt-24 text-[clamp(1.7rem,3.4vw,2.5rem)] leading-[1.1] font-semibold text-navy"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {feature.title}
                 </h3>
                 {FeatureIcon && (
-                  <FeatureIcon size={28} aria-hidden="true" className="mt-6 text-white/40" />
+                  <FeatureIcon size={28} aria-hidden="true" className="mt-6 text-civic" />
                 )}
               </div>
-              <div className="lg:border-l lg:border-white/15 lg:pl-16">
-                <p className="text-[1.15rem] leading-relaxed text-white">{feature.summary}</p>
+              <div className="lg:border-l lg:border-rule lg:pl-16">
+                <p className="text-[1.15rem] leading-relaxed text-ink">{feature.summary}</p>
                 {feature.detail.map((d) => (
-                  <p key={d.slice(0, 24)} className="mt-4 leading-relaxed text-white/75">
+                  <p key={d.slice(0, 24)} className="mt-4 leading-relaxed text-slate">
                     {d}
                   </p>
                 ))}
-                <a href="#your-voice" className="btn btn-outline-light mt-8">
+                <a href="#your-voice" className="btn btn-primary mt-8">
                   Tell him what you are dealing with
                 </a>
               </div>

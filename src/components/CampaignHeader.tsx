@@ -64,14 +64,14 @@ export function CampaignHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-rule bg-cream/95 backdrop-blur-[2px]">
-      <div className="mx-auto flex h-[68px] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+    <header className="band-navy sticky top-0 z-50 border-b-[3px] border-red bg-navy">
+      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
           className="flex items-center py-2"
           aria-label={`${campaign.candidate.name} for ${campaign.candidate.ward} — home`}
         >
-          <CampaignWordmark size="md" />
+          <CampaignWordmark tone="light" size="md" />
         </Link>
 
         {/* Desktop navigation */}
@@ -80,7 +80,7 @@ export function CampaignHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-sm px-3 py-2.5 text-[0.92rem] font-medium text-ink transition-colors hover:text-civic-deep"
+              className="rounded-sm px-3 py-2.5 text-[0.92rem] font-medium text-white/85 transition-colors hover:text-white"
             >
               {item.label}
             </a>
@@ -97,7 +97,7 @@ export function CampaignHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="-mr-2 flex h-12 w-12 items-center justify-center rounded-sm text-navy lg:hidden"
+          className="-mr-2 flex h-12 w-12 items-center justify-center rounded-sm text-white lg:hidden"
         >
           {open ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
@@ -107,7 +107,7 @@ export function CampaignHeader() {
       {/* Mobile overlay menu */}
       {open && (
         <div
-          className="fixed inset-x-0 top-[68px] bottom-0 z-50 bg-cream lg:hidden"
+          className="band-navy fixed inset-x-0 top-[72px] bottom-0 z-50 bg-navy lg:hidden"
           id="mobile-menu"
         >
           <div ref={panelRef} className="flex h-full flex-col overflow-y-auto px-4 pt-2 pb-10">
@@ -117,7 +117,7 @@ export function CampaignHeader() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="border-b border-rule py-4 text-lg font-medium text-navy"
+                  className="border-b border-white/15 py-4 text-lg font-medium text-white"
                 >
                   {item.label}
                 </a>
@@ -127,11 +127,11 @@ export function CampaignHeader() {
               <a href="#lawn-sign" onClick={() => setOpen(false)} className="btn btn-primary w-full">
                 Request a lawn sign
               </a>
-              <a href="#your-voice" onClick={() => setOpen(false)} className="btn btn-outline w-full">
+              <a href="#your-voice" onClick={() => setOpen(false)} className="btn btn-outline-light w-full">
                 Share a concern
               </a>
             </div>
-            <p className="label-mono mt-8 text-slate">
+            <p className="label-mono mt-8 text-white/70">
               Election day · {campaign.election.shortDateLabel}
             </p>
           </div>

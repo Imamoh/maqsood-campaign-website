@@ -5,20 +5,38 @@
    Adjust colours here; every component reads from these variables.
    ================================================================== */
 @theme {
-  --color-navy: #0b1f3a;
-  --color-navy-700: #122c4f;
-  --color-navy-500: #1d3d68;
-  --color-civic: #145da0;
-  --color-civic-deep: #0f4a80;
-  --color-cream: #f7f4ee;
-  --color-cream-deep: #efe9df;
-  --color-ink: #16233a;
-  --color-slate: #4a5568;
-  --color-rule: #d9d2c6; /* decorative dividers only */
-  --color-field: #8c8578; /* form control borders — meets WCAG 1.4.11 (3:1) */
-  --color-signal: #c62828;
-  --color-signal-deep: #a01e1e;
-  --color-brass: #a8842c;
+  /* --- Navy: header, footer, campaign bands, primary headings --------- */
+  --color-navy: #1d4772; /* primary deep navy (flyer band) */
+  --color-navy-700: #103b68; /* dark navy — hover and deeper bands */
+  --color-navy-500: #2b5a8c; /* lighter navy for hover borders */
+
+  /* --- Civic blue: borders, icons, secondary accents ------------------ */
+  --color-civic: #2b7fc3; /* flyer civic blue — accents and borders only */
+  --color-civic-deep: #1b6399; /* link and label text (6.4:1 on white) */
+
+  /* --- Surfaces ------------------------------------------------------- */
+  --color-panel: #eaf3fa; /* pale blue content panel */
+  --color-blush: #fbeded; /* pale blush content panel */
+  /* Legacy aliases: components still use bg-cream / bg-cream-deep.
+     They now resolve to the flyer's pale blue and pale blush. */
+  --color-cream: #eaf3fa;
+  --color-cream-deep: #fbeded;
+
+  /* --- Text ----------------------------------------------------------- */
+  --color-ink: #202631; /* main dark text */
+  --color-slate: #4a5568; /* secondary body text (6.6:1 on every surface) */
+
+  /* --- Lines and controls --------------------------------------------- */
+  --color-rule: #cbdae8; /* decorative dividers only */
+  --color-field: #74839a; /* form control borders — WCAG 1.4.11 (3:1) */
+
+  /* --- Red -------------------------------------------------------------
+     The flyer's coral (#e3433e) is only 4.1:1 on white, so it is reserved
+     for non-text use: rules, bars and borders. Text and buttons use the
+     deeper red, which carries white text at 5.6:1.                        */
+  --color-red: #e3433e; /* brand coral — decorative only, never small text */
+  --color-signal: #c1332f; /* primary action fill and accent text */
+  --color-signal-deep: #ae2e2a; /* error text (6.5:1 on white) */
 
   --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
@@ -32,12 +50,12 @@
   html {
     scroll-behavior: smooth;
     /* Sticky header offset for in-page anchors */
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: 5.75rem;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background-color: var(--color-cream);
+    background-color: #ffffff;
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: 1rem;
@@ -64,9 +82,16 @@
 
   /* Visible focus for every interactive element, including keyboard-only. */
   :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-    outline: 3px solid var(--color-civic);
+    outline: 3px solid var(--color-civic-deep);
     outline-offset: 2px;
     border-radius: 2px;
+  }
+
+  /* Inside a navy band, the blue focus ring would disappear. Apply
+     .band-navy to any navy-background region to invert it. */
+  .band-navy
+    :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline-color: #ffffff;
   }
 
   ::selection {
@@ -83,7 +108,7 @@
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
 
@@ -134,11 +159,10 @@
     content: "";
     position: absolute;
     top: 50%;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: var(--color-cream);
-    border: 2px solid currentColor;
+    background: currentColor;
     transform: translateY(-50%);
   }
   .transit-rule::before {
