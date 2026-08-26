@@ -34,8 +34,8 @@ const tabs: { id: TabId; label: string; blurb: string; Icon: LucideIcon; anchor:
   },
   {
     id: "invite",
-    label: "Invite Maqsood",
-    blurb: "Request an appearance at a tenants' meeting, residents' association or community event.",
+    label: "Invite me to speak",
+    blurb: "Ask me to a tenants' meeting, residents' association or community event.",
     Icon: CalendarPlus,
     anchor: "invite",
   },
@@ -127,11 +127,11 @@ export function GetInvolved() {
           <p className="label-mono text-civic-deep">Get involved</p>
           <span aria-hidden="true" className="transit-rule mt-3 mb-6 max-w-[140px] text-civic" />
           <h2 id="get-involved-heading" className="display-lg">
-            Campaigns are built by neighbours.
+            My campaign is built by neighbours.
           </h2>
           <p className="lede mt-4">
-            Whether you can knock on a few doors, put a sign on your lawn or make an introduction in
-            your building, there is a way to help.
+            Whether you can knock on a few doors, put a sign on your lawn or make an introduction
+            in your building, there is a way to help.
           </p>
         </div>
 
@@ -455,7 +455,7 @@ export function GetInvolved() {
                       ? "Request a sign"
                       : active === "volunteer"
                         ? "Sign me up"
-                        : "Send to the campaign"}
+                        : "Send my message"}
                 </button>
                 <FormStatus
                   status={status}

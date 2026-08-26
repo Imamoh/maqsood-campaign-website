@@ -15,7 +15,7 @@ export function Contact() {
           </h2>
           <p className="lede mt-4 max-w-[46ch]">
             A neighbourhood concern, an offer to help, or an invitation to a community meeting —
-            all of it reaches the campaign at the same address.
+            all of it reaches me at the same address.
           </p>
           <a href={`mailto:${contact.email}`} className="btn btn-primary mt-7">
             Email the campaign

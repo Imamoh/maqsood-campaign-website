@@ -26,14 +26,14 @@ export function Priorities() {
     <section id="priorities" aria-labelledby="priorities-heading" className="scroll-mt-24 bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
         <div className="max-w-2xl">
-          <p className="label-mono text-civic-deep">What he will focus on</p>
+          <p className="label-mono text-civic-deep">What I will focus on</p>
           <span aria-hidden="true" className="transit-rule mt-3 mb-6 max-w-[140px] text-civic" />
           <h2 id="priorities-heading" className="display-lg">
             Six practical priorities for Ward 14.
           </h2>
           <p className="lede mt-4">
-            These are the things Maqsood intends to raise, question and keep on the agenda at City
-            Hall — described plainly, without promising outcomes no single councillor can guarantee.
+            These are the things I intend to raise, question and keep on the agenda at City Hall —
+            described plainly, without promising outcomes no single councillor can guarantee.
           </p>
         </div>
 

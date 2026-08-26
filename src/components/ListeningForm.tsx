@@ -71,11 +71,11 @@ export function ListeningForm() {
           </h2>
           <p className="mt-5 max-w-[46ch] text-[1.05rem] leading-relaxed text-white/80">
             What is happening on your street, in your building, or across your neighbourhood? Tell
-            us what City Hall should be paying attention to — the specific things, not the
+            me what City Hall should be paying attention to — the specific things, not the
             general ones.
           </p>
           <p className="mt-6 max-w-[46ch] text-[0.92rem] leading-relaxed text-white/60">
-            Messages go directly to the campaign. Sending one does not add you to a mailing
+            Your message comes directly to me. Sending one does not add you to a mailing
             list.
           </p>
         </div>
@@ -219,7 +219,7 @@ export function ListeningForm() {
                 className="btn btn-primary w-full sm:w-auto sm:self-start"
                 disabled={status === "submitting"}
               >
-                {status === "submitting" ? "Sending…" : "Send to the campaign"}
+                {status === "submitting" ? "Sending…" : "Send my message"}
               </button>
               <FormStatus
                 status={status}

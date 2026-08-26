@@ -52,7 +52,7 @@ export const campaign = {
     headline: "A stronger voice for our neighbourhood.",
     identity: "Maqsood Ahmad for Toronto City Council",
     supporting:
-      "Maqsood Ahmad is a long-time Ward 14 resident bringing practical housing and construction knowledge — and a commitment to listening, accountability and respect for working people — to City Hall.",
+      "I am a long-time Ward 14 resident, and I want to bring practical housing and construction knowledge — along with a commitment to listening, accountability and respect for working people — to City Hall.",
     primaryCta: { label: "Share what matters to you", href: "#your-voice" },
     secondaryCta: { label: "Join the campaign", href: "#get-involved" },
     trust: [
@@ -71,28 +71,28 @@ export const campaign = {
   },
 
   about: {
-    kicker: "Meet Maqsood",
+    kicker: "About me",
     heading: "Ward 14 has been home for 25 years.",
     salutation: "Dear neighbours,",
     paragraphs: [
-      "Maqsood Ahmad has lived in Ward 14 for about 25 years. It is where he raised his family, and where he has spent his working life alongside the people who live here.",
-      "As a real estate professional, he has worked with residents through some of the biggest decisions they make — buying, selling, renting, renovating, or simply staying put. That work has given him practical knowledge of housing and construction, and a close view of what those decisions cost families in real terms.",
-      "It has also shown him the pressures carried by homeowners, tenants, families, seniors, small businesses and working people across the ward — including gig workers, whose concerns are rarely at the table when decisions get made.",
-      "He is running to give residents an accessible voice at City Hall: someone who answers, who shows up, and who carries neighbourhood concerns into the room where they are decided.",
+      "I have lived in Ward 14 for about 25 years. This is where I raised my family, and where I have spent my working life alongside the people who live here.",
+      "As a real estate professional, I have worked with residents through some of the biggest decisions they make — buying, selling, renting, renovating, or simply staying put. That work has given me practical knowledge of housing and construction, and a close view of what those decisions cost families in real terms.",
+      "It has also shown me the pressures carried by homeowners, tenants, families, seniors, small businesses and working people across the ward — including gig workers, whose concerns are rarely at the table when decisions get made.",
+      "I am running to give residents an accessible voice at City Hall: someone who answers, who shows up, and who carries neighbourhood concerns into the room where they are decided.",
     ],
   },
 
   /**
    * PRIORITIES
-   * Keep these descriptions restrained. They describe what Maqsood will
-   * raise and advocate for — not results he guarantees.
+   * Written in the candidate's first-person voice. Keep them restrained:
+   * they describe what I will raise and advocate for — not results guaranteed.
    */
   priorities: [
     {
       id: "safer-streets",
       title: "Safer Streets & Neighbourhoods",
       summary:
-        "More attention to street safety, lighting, parks, traffic concerns and everyday neighbourhood conditions, so residents feel secure where they live.",
+        "I will press for more attention to street safety, lighting, parks, traffic concerns and everyday neighbourhood conditions, so residents feel secure where they live.",
       icon: "shield",
       feature: false,
       detail: [] as readonly string[],
@@ -101,7 +101,7 @@ export const campaign = {
       id: "affordable-living",
       title: "Affordable Living & Housing",
       summary:
-        "Practical housing discussions, protection for affordability, and residents who are genuinely heard when growth and development affect their neighbourhood.",
+        "I will push for practical housing discussions, work to protect affordability, and make sure residents are genuinely heard when growth and development affect their neighbourhood.",
       icon: "home",
       feature: false,
       detail: [] as readonly string[],
@@ -110,7 +110,7 @@ export const campaign = {
       id: "respect-for-taxpayers",
       title: "Respect for Taxpayers",
       summary:
-        "Serious questions about how money is spent, and priority for the City services residents need and actually use.",
+        "I will ask serious questions about how money is spent, and prioritize the City services residents need and actually use.",
       icon: "receipt",
       feature: false,
       detail: [] as readonly string[],
@@ -124,14 +124,14 @@ export const campaign = {
       icon: "car",
       feature: true,
       detail: [
-        "Workers deserve fair compensation, transparent deductions, protection from unfair deactivations and a meaningful voice in decisions affecting their livelihoods.",
+        "I believe workers deserve fair compensation, transparent deductions, protection from unfair deactivations and a meaningful voice in decisions affecting their livelihoods.",
       ] as readonly string[],
     },
     {
       id: "support-local-business",
       title: "Support Local Business",
       summary:
-        "Working with small businesses and local business communities to reduce unnecessary barriers and keep neighbourhood commercial areas strong.",
+        "I will work with small businesses and local business communities to reduce unnecessary barriers and keep neighbourhood commercial areas strong.",
       icon: "store",
       feature: false,
       detail: [] as readonly string[],
@@ -140,7 +140,7 @@ export const campaign = {
       id: "city-hall-that-listens",
       title: "A City Hall That Listens",
       summary:
-        "Staying accessible, holding regular community conversations, and carrying neighbourhood concerns directly to City Hall.",
+        "I will stay accessible, hold regular community conversations, and carry neighbourhood concerns directly to City Hall.",
       icon: "ear",
       feature: false,
       detail: [] as readonly string[],

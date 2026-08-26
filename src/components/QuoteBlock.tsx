@@ -11,7 +11,7 @@ export function QuoteBlock() {
     <section aria-labelledby="quote-heading" className="border-y border-rule bg-cream-deep">
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:py-20">
         <h2 id="quote-heading" className="label-mono text-civic-deep">
-          In his own words
+          In my own words
         </h2>
         <span aria-hidden="true" className="transit-rule mt-3 mb-7 max-w-[120px] text-civic" />
         <figure>
