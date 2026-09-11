@@ -1,4 +1,4 @@
-import { Mail, Globe, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { campaign } from "@/data/campaign";
 
 export function Contact() {
@@ -35,13 +35,6 @@ export function Contact() {
                   {contact.email}
                 </a>
               </dd>
-            </div>
-          </div>
-          <div className="flex items-start gap-4 border-b border-rule py-5">
-            <Globe size={18} aria-hidden="true" className="mt-1 shrink-0 text-civic" />
-            <div>
-              <dt className="label-mono text-slate">Website</dt>
-              <dd className="mt-1 font-semibold text-navy">{contact.domain}</dd>
             </div>
           </div>
           <div className="flex items-start gap-4 py-5">
