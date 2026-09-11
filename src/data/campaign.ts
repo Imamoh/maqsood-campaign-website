@@ -32,7 +32,7 @@ export const campaign = {
   },
 
   contact: {
-    email: "campaign@electmaqsood.com",
+    email: "info@electmaqsood.com",
     domain: "electmaqsood.com",
     siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://electmaqsood.com",
   },
@@ -65,7 +65,7 @@ export const campaign = {
 
   quote: {
     text:
-      "Ward 14 has been my home for 25 years. I want to help make it safer, more affordable, and more responsive to the people who live here.",
+      "After 25 years in Ward 14, I understand the challenges facing our community. I am running to stand up for gig workers, first-time homebuyers, seniors and local businesses — and to help build safer neighbourhoods and a more affordable city we can all proudly call home.",
     attribution: "Maqsood Ahmad",
     attributionRole: "Candidate for Toronto City Council, Ward 14",
   },
@@ -73,12 +73,14 @@ export const campaign = {
   about: {
     kicker: "About me",
     heading: "Ward 14 has been home for 25 years.",
-    salutation: "Dear neighbours,",
+    salutation: "Dear Neighbours,",
     paragraphs: [
-      "I have lived in Ward 14 for about 25 years. This is where I raised my family, and where I have spent my working life alongside the people who live here.",
-      "As a real estate professional, I have worked with residents through some of the biggest decisions they make — buying, selling, renting, renovating, or simply staying put. That work has given me practical knowledge of housing and construction, and a close view of what those decisions cost families in real terms.",
-      "It has also shown me the pressures carried by homeowners, tenants, families, seniors, small businesses and working people across the ward — including gig workers, whose concerns are rarely at the table when decisions get made.",
-      "I am running to give residents an accessible voice at City Hall: someone who answers, who shows up, and who carries neighbourhood concerns into the room where they are decided.",
+      "For the past 25 years, Ward 14 has been my home. This is where I am raising my family, have built my career and developed connections with residents and the wider community.",
+      "Throughout my career in real estate and construction, I have helped residents in some of life's most important decisions — buying, selling, renting, renovating or remaining in the homes and neighbourhoods they know. This experience has given me practical knowledge of housing and development, along with a clear understanding of the real financial pressures these decisions place on families.",
+      "My work and conversations across the community have also shown me the challenges facing homeowners, tenants, seniors, first-time homebuyers, small-business owners, working families and gig workers — people whose concerns are too often overlooked when important decisions are made.",
+      "I am running for Toronto City Council to provide Ward 14 residents with an accessible and effective voice at City Hall: someone who listens, responds, shows up and remains accountable.",
+      "My priorities include advocating for more affordable housing, reducing barriers for first-time homebuyers, supporting seniors and gig workers, strengthening local businesses, addressing traffic and neighbourhood safety concerns, and promoting the responsible management of taxpayers' money.",
+      "Above all, I want to ensure that every neighbourhood in Ward 14 is heard and properly represented when decisions are made at City Hall. Together, we can build a safer, more affordable and better city — a place we can all proudly call home.",
     ],
   },
 

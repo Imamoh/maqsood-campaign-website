@@ -74,6 +74,11 @@ export default function GigWorkersPage() {
       {/* ---------- Closing statement ---------- */}
       <section aria-label="Closing statement" className="band-navy bg-navy">
         <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:py-16">
+          {gigWorkers.closingIntro.map((paragraph) => (
+            <p key={paragraph.slice(0, 32)} className="mb-5 leading-relaxed text-white/80">
+              {paragraph}
+            </p>
+          ))}
           <p
             className="text-[clamp(1.2rem,2.6vw,1.6rem)] leading-[1.4] font-medium text-white"
             style={{ fontFamily: "var(--font-display)" }}
