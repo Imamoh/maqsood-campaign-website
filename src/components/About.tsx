@@ -42,7 +42,7 @@ export function About() {
               </div>
               <div className="flex justify-between gap-4 py-2.5">
                 <dt className="text-slate">Years in Ward 14</dt>
-                <dd className="text-right font-semibold text-navy">About 25</dd>
+                <dd className="text-right font-semibold text-navy">25</dd>
               </div>
             </dl>
           </div>

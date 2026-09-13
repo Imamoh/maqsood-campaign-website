@@ -56,6 +56,18 @@ export function Hero() {
 
         {/* ---------- Portrait frame (left on desktop, so he faces the copy) ---------- */}
         <div className="relative order-2 lg:order-1">
+          {/* Campaign lockup. Replaces the small slogan tab that previously sat
+              on the portrait, so the slogan appears only once in the hero. */}
+          <div className="mb-5">
+            <p className="label-mono text-signal">{candidate.slogan}</p>
+            <p
+              className="mt-1.5 text-[clamp(1.35rem,3.6vw,1.9rem)] font-bold uppercase leading-[1.05] tracking-[0.06em] text-navy"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              Elect {candidate.name}
+            </p>
+          </div>
+
           <div className="relative aspect-[4/5] w-full overflow-hidden border border-navy/20 bg-navy sm:aspect-[5/6] lg:aspect-[4/5]">
             {portrait.hasPortrait ? (
               <Image
@@ -95,11 +107,6 @@ export function Hero() {
               </div>
             )}
           </div>
-
-          {/* Slogan tab — small, restrained, and offset from the frame */}
-          <p className="label-mono absolute -bottom-3 right-4 bg-signal px-3 py-2 text-white sm:right-6">
-            {candidate.slogan}
-          </p>
         </div>
       </div>
     </section>

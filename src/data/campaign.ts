@@ -49,23 +49,23 @@ export const campaign = {
 
   hero: {
     eyebrow: "Toronto–Danforth · Ward 14",
-    headline: "A stronger voice for our neighbourhood.",
+    headline: "Your Voice at City Hall",
     identity: "Maqsood Ahmad for Toronto City Council",
     supporting:
-      "I am a long-time Ward 14 resident, and I want to bring practical housing and construction knowledge — along with a commitment to listening, accountability and respect for working people — to City Hall.",
+      "After 25 years in Ward 14, I understand the challenges facing our community. I am running to stand up for gig workers, first-time homebuyers, seniors and local businesses — and to help build safer neighbourhoods and a more affordable city we can all proudly call home.",
     primaryCta: { label: "Share what matters to you", href: "#your-voice" },
     secondaryCta: { label: "Join the campaign", href: "#get-involved" },
     trust: [
-      "25 years in Ward 14",
-      "Real estate professional",
-      "Housing and construction knowledge",
-      "Community-focused",
+      "25 years rooted in Ward 14",
+      "Connected across the community",
+      "Listening and accountability",
+      "Fair representation at City Hall",
     ],
   },
 
   quote: {
     text:
-      "After 25 years in Ward 14, I understand the challenges facing our community. I am running to stand up for gig workers, first-time homebuyers, seniors and local businesses — and to help build safer neighbourhoods and a more affordable city we can all proudly call home.",
+      "Together, we can build a safer, more affordable and better city — a place we can all proudly call home.",
     attribution: "Maqsood Ahmad",
     attributionRole: "Candidate for Toronto City Council, Ward 14",
   },
@@ -109,15 +109,6 @@ export const campaign = {
       detail: [] as readonly string[],
     },
     {
-      id: "respect-for-taxpayers",
-      title: "Respect for Taxpayers",
-      summary:
-        "I will ask serious questions about how money is spent, and prioritize the City services residents need and actually use.",
-      icon: "receipt",
-      feature: false,
-      detail: [] as readonly string[],
-    },
-    {
       id: "fairness-for-gig-workers",
       // Homepage preview only. The full statement lives at /gig-workers.
       title: "A Voice for Gig Workers",
@@ -128,6 +119,15 @@ export const campaign = {
       detail: [
         "I believe workers deserve fair compensation, transparent deductions, protection from unfair deactivations and a meaningful voice in decisions affecting their livelihoods.",
       ] as readonly string[],
+    },
+    {
+      id: "respect-for-taxpayers",
+      title: "Respect for Taxpayers",
+      summary:
+        "I will ask serious questions about how money is spent, and prioritize the City services residents need and actually use.",
+      icon: "receipt",
+      feature: false,
+      detail: [] as readonly string[],
     },
     {
       id: "support-local-business",

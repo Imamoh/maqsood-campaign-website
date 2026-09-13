@@ -39,7 +39,7 @@ export function Priorities() {
 
         {/* Editorial rows */}
         <ol className="mt-12 border-t border-rule">
-          {rows.slice(0, 3).map((p) => (
+          {rows.slice(0, 2).map((p) => (
             <PriorityRow key={p.id} priority={p} />
           ))}
         </ol>
@@ -51,7 +51,7 @@ export function Priorities() {
           <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
               <div>
-                <p className="label-mono text-signal">Priority 04</p>
+                <p className="label-mono text-signal">Priority 03</p>
                 <span aria-hidden="true" className="transit-rule mt-3 mb-6 max-w-[120px] text-civic" />
                 <h3
                   id={feature.id}
@@ -86,8 +86,8 @@ export function Priorities() {
       )}
 
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
-        <ol start={5} className="border-t border-rule">
-          {rows.slice(3).map((p) => (
+        <ol start={4} className="border-t border-rule">
+          {rows.slice(2).map((p) => (
             <PriorityRow key={p.id} priority={p} />
           ))}
         </ol>
