@@ -101,9 +101,9 @@ export const campaign = {
     },
     {
       id: "affordable-living",
-      title: "Affordable Living & Housing",
+      title: "Affordable Living, Housing & Transportation",
       summary:
-        "I will push for practical housing discussions, work to protect affordability, and make sure residents are genuinely heard when growth and development affect their neighbourhood.",
+        "I will work to keep property taxes under control after years of increases, reduce City-controlled utility costs wherever possible, and keep TTC fares as affordable as possible. More affordable public transit will give residents a practical alternative to driving and help reduce traffic on our roads. I will also support responsible housing development and ensure residents are genuinely heard when growth affects their neighbourhoods.",
       icon: "home",
       feature: false,
       detail: [] as readonly string[],
