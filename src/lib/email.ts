@@ -1,3 +1,4 @@
+import { campaign } from "@/data/campaign";
 import { escapeHtml, FORM_LABELS, type FormType } from "./validation";
 
 /**
@@ -31,6 +32,9 @@ const FIELD_LABELS: Record<string, string> = {
   permission: "Permission to place a sign confirmed",
   notes: "Notes",
   organisation: "Group or organisation",
+  amount: "Intended contribution amount",
+  method: "Preferred payment method",
+  residency: "Confirmed individual normally resident in Ontario",
   consent: "Consent given",
 };
 
@@ -45,6 +49,9 @@ const FIELD_ORDER = [
   "interests",
   "availability",
   "address",
+  "amount",
+  "method",
+  "residency",
   "permission",
   "message",
   "notes",
@@ -132,7 +139,9 @@ export async function deliverSubmission(
   values: Record<string, string>,
 ): Promise<DeliveryResult> {
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CAMPAIGN_FORM_RECIPIENT;
+  // Falls back to the public campaign address so a stale or missing
+  // CAMPAIGN_FORM_RECIPIENT can never silently route mail to an old inbox.
+  const to = process.env.CAMPAIGN_FORM_RECIPIENT || campaign.contact.email;
   const from = process.env.CAMPAIGN_FORM_FROM;
 
   if (!apiKey || !to || !from) {
@@ -149,7 +158,7 @@ export async function deliverSubmission(
     from,
     to,
     replyTo: values.email,
-    subject: `${FORM_LABELS[type]}: ${values.name ?? "Website submission"}`,
+    subject: `[electmaqsood.com] ${FORM_LABELS[type]} — ${values.name || "Website submission"}`,
     text,
     html,
   });

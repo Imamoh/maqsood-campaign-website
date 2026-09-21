@@ -4,7 +4,14 @@
  * revalidates — client-side checks are a convenience, never a control.
  */
 
-export const FORM_TYPES = ["concern", "volunteer", "lawn-sign", "invite", "support"] as const;
+export const FORM_TYPES = [
+  "concern",
+  "volunteer",
+  "lawn-sign",
+  "invite",
+  "support",
+  "contribution",
+] as const;
 export type FormType = (typeof FORM_TYPES)[number];
 
 export const FORM_LABELS: Record<FormType, string> = {
@@ -13,6 +20,7 @@ export const FORM_LABELS: Record<FormType, string> = {
   "lawn-sign": "Lawn sign request",
   invite: "Community meeting invitation",
   support: "General campaign support",
+  contribution: "Contribution enquiry",
 };
 
 export const ISSUE_CATEGORIES = [
@@ -35,6 +43,12 @@ export const VOLUNTEER_INTERESTS = [
   "General support",
 ] as const;
 
+export const PAYMENT_METHODS = [
+  "Interac e-Transfer",
+  "Cheque",
+  "Not sure yet — please advise",
+] as const;
+
 export const LIMITS = {
   name: 120,
   email: 200,
@@ -47,10 +61,12 @@ export const LIMITS = {
   address: 240,
   notes: 800,
   organisation: 160,
+  amount: 40,
+  method: 60,
 } as const;
 
 /** Fields that must never be logged, echoed to analytics, or written to console. */
-export const SENSITIVE_FIELDS = new Set(["address", "phone", "postal", "email"]);
+export const SENSITIVE_FIELDS = new Set(["address", "phone", "postal", "email", "amount"]);
 
 export type ValidationResult =
   | { ok: true; values: Record<string, string> }
@@ -169,6 +185,26 @@ export function validate(type: FormType, raw: Raw): ValidationResult {
       optional("phone", LIMITS.phone);
       optional("organisation", LIMITS.organisation);
       required("message", LIMITS.message, "Details of the meeting");
+      break;
+    }
+
+    case "contribution": {
+      // Contribution ENQUIRY only. No card, bank or credential fields exist
+      // here by design — see the form component.
+      required("phone", LIMITS.phone, "Phone number");
+      required("address", LIMITS.address, "Residential address");
+      required("amount", LIMITS.amount, "Intended contribution amount");
+      const method = required("method", LIMITS.method, "Preferred payment method");
+      if (method && !PAYMENT_METHODS.includes(method as (typeof PAYMENT_METHODS)[number])) {
+        errors.method = "Choose one of the listed payment methods.";
+      }
+      if (raw.residency !== true && raw.residency !== "true" && raw.residency !== "on") {
+        errors.residency =
+          "Please confirm you are an individual normally resident in Ontario.";
+      } else {
+        values.residency = "Yes";
+      }
+      optional("notes", LIMITS.notes);
       break;
     }
 

@@ -1,5 +1,6 @@
 import { Mail, MapPin } from "lucide-react";
 import { campaign } from "@/data/campaign";
+import { MeetingLink } from "./MeetingLink";
 
 export function Contact() {
   const { contact, candidate } = campaign;
@@ -17,9 +18,12 @@ export function Contact() {
             A neighbourhood concern, an offer to help, or an invitation to a community meeting —
             all of it reaches me at the same address.
           </p>
-          <a href={`mailto:${contact.email}`} className="btn btn-primary mt-7">
-            Email the campaign
-          </a>
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a href={`mailto:${contact.email}`} className="btn btn-primary">
+              Email the campaign
+            </a>
+            <MeetingLink className="btn btn-outline" />
+          </div>
         </div>
 
         <dl className="border-t border-rule">

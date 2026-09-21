@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HousingDisclosure } from "./HousingDisclosure";
 import { Shield, Home, Receipt, Car, Store, Ear } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { campaign } from "@/data/campaign";
@@ -29,7 +30,7 @@ export function Priorities() {
           <p className="label-mono text-civic-deep">What I will focus on</p>
           <span aria-hidden="true" className="transit-rule mt-3 mb-6 max-w-[140px] text-civic" />
           <h2 id="priorities-heading" className="display-lg">
-            Six practical priorities for Ward 14.
+            Practical priorities for Ward 14.
           </h2>
           <p className="lede mt-4">
             These are the things I intend to raise, question and keep on the agenda at City Hall —
@@ -91,6 +92,11 @@ export function Priorities() {
             <PriorityRow key={p.id} priority={p} />
           ))}
         </ol>
+
+        {/* Closing line — deliberately unnumbered and not a priority item. */}
+        <p className="mt-8 max-w-[68ch] border-l-[3px] border-signal pl-5 text-[1.02rem] leading-relaxed text-navy">
+          {campaign.prioritiesClosing}
+        </p>
       </div>
     </section>
   );
@@ -114,9 +120,11 @@ function PriorityRow({ priority }: { priority: (typeof campaign.priorities)[numb
         {Icon && <Icon size={22} aria-hidden="true" className="mt-1 shrink-0 text-civic" />}
         <span>{priority.title}</span>
       </h3>
-      <p className="max-w-[60ch] text-slate sm:col-start-2 lg:col-start-3 lg:pl-8">
-        {priority.summary}
-      </p>
+      <div className="max-w-[60ch] sm:col-start-2 lg:col-start-3 lg:pl-8">
+        <p className="text-slate">{priority.summary}</p>
+        {/* Expanded affordable-housing detail stays inside this priority. */}
+        {priority.id === "affordable-living" && <HousingDisclosure />}
+      </div>
     </li>
   );
 }

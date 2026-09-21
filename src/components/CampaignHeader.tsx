@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { campaign } from "@/data/campaign";
+import { MeetingLink } from "./MeetingLink";
 import { CampaignWordmark } from "./CampaignWordmark";
 
 /**
@@ -122,8 +123,8 @@ export function CampaignHeader() {
               {item.label}
             </NavItem>
           ))}
-          <NavItem href="#lawn-sign" className="btn btn-primary ml-3 !min-h-[44px] !py-2 text-[0.9rem]">
-            Request a lawn sign
+          <NavItem href="#contribute" className="btn btn-primary ml-3 !min-h-[44px] !py-2 text-[0.9rem]">
+            Support the Campaign
           </NavItem>
         </nav>
 
@@ -161,9 +162,13 @@ export function CampaignHeader() {
               ))}
             </nav>
             <div className="mt-6 flex flex-col gap-3">
-              <NavItem href="#lawn-sign" onClick={() => setOpen(false)} className="btn btn-primary w-full">
+              <NavItem href="#contribute" onClick={() => setOpen(false)} className="btn btn-primary w-full">
+                Support the Campaign
+              </NavItem>
+              <NavItem href="#lawn-sign" onClick={() => setOpen(false)} className="btn btn-outline w-full">
                 Request a lawn sign
               </NavItem>
+              <MeetingLink onNavigate={() => setOpen(false)} className="btn btn-outline w-full" />
               <NavItem href="#your-voice" onClick={() => setOpen(false)} className="btn btn-outline w-full">
                 Share a concern
               </NavItem>

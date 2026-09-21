@@ -99,7 +99,13 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json(
-    { ok: true, message: "Thank you. Your message has been sent to the campaign." },
+    {
+      ok: true,
+      message:
+        type === "contribution"
+          ? "Thank you. Your enquiry has been sent. The campaign will contact you with contribution instructions and confirm eligibility before any funds are accepted. No payment has been made."
+          : "Thank you. Your message has been sent to the campaign.",
+    },
     { status: 200 },
   );
 }

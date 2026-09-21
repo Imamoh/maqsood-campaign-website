@@ -138,16 +138,52 @@ export const campaign = {
       feature: false,
       detail: [] as readonly string[],
     },
-    {
-      id: "city-hall-that-listens",
-      title: "A City Hall That Listens",
-      summary:
-        "I will stay accessible, hold regular community conversations, and carry neighbourhood concerns directly to City Hall.",
-      icon: "ear",
-      feature: false,
-      detail: [] as readonly string[],
-    },
   ],
+
+  /**
+   * Closing line for the priorities section. Rendered once, unnumbered, below
+   * the list — deliberately not a sixth priority, card or numbered item.
+   */
+  prioritiesClosing:
+    "I will remain accessible, listen directly to residents and ensure Ward 14's concerns are heard at City Hall.",
+
+  /**
+   * Expandable detail shown inside Priority 02 on the home page.
+   * Candidate-approved. Not a separate route or policy page.
+   */
+  housingPlan: {
+    title: "Lowering the Cost of Building Affordable Housing",
+    intro: "Toronto must make it easier and less expensive to build affordable homes. I will advocate for:",
+    proposals: [
+      "Lower permit and planning fees for legal basement apartments, secondary suites, garden suites, accessibility renovations and affordable rental units.",
+      "Faster approvals with clearer requirements and better support for homeowners and small builders.",
+      "Reduced or deferred development charges for affordable and family-sized homes.",
+      "City grants or property-tax incentives for homeowners who create legal rental units and keep rents affordable for an agreed period.",
+      "Expanded low-interest loans and rebates for renovations that create safe, legal and energy-efficient housing.",
+      "Better use of federal programs, including MLI Select, to encourage affordable, accessible and energy-efficient rental housing.",
+      "An annual review of City fees and approval timelines to prevent unnecessary construction costs.",
+    ],
+    conclusion:
+      "By reducing unnecessary costs and delays, we can build more housing, support responsible development and create more affordable choices for Toronto families.",
+  },
+
+  /**
+   * MEETING BOOKING
+   * ------------------------------------------------------------------
+   * Single source for the scheduling link. While calendlyUrl is an empty
+   * string, the "Book a Meeting" controls point at the on-site meeting
+   * request form instead, so no visitor is sent to a broken or fake page.
+   *
+   * TO ACTIVATE: paste the real link here, e.g.
+   *   calendlyUrl: "https://calendly.com/your-handle/30min",
+   * No other file needs to change.
+   */
+  meeting: {
+    calendlyUrl: "",
+    label: "Book a Meeting",
+    /** Fallback used while calendlyUrl is empty. */
+    fallbackHref: "#invite",
+  },
 
   navigation: [
     { label: "About", href: "#about" },

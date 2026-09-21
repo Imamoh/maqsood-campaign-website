@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Users, Signpost, CalendarPlus, HeartHandshake } from "lucide-react";
+import { Users, Signpost, CalendarPlus, HeartHandshake, Wallet } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { campaign } from "@/data/campaign";
-import { LIMITS, VOLUNTEER_INTERESTS, type FormType } from "@/lib/validation";
+import { LIMITS, PAYMENT_METHODS, VOLUNTEER_INTERESTS, type FormType } from "@/lib/validation";
 import {
   Consent,
   Field,
@@ -15,7 +15,7 @@ import {
   useFocusFirstError,
 } from "./form/controls";
 
-type TabId = "volunteer" | "lawn-sign" | "invite" | "support";
+type TabId = "volunteer" | "lawn-sign" | "invite" | "support" | "contribution";
 
 const tabs: { id: TabId; label: string; blurb: string; Icon: LucideIcon; anchor: string }[] = [
   {
@@ -40,6 +40,13 @@ const tabs: { id: TabId; label: string; blurb: string; Icon: LucideIcon; anchor:
     anchor: "invite",
   },
   {
+    id: "contribution",
+    label: "Support the campaign",
+    blurb: "Ask about making a contribution. No payment is taken on this site.",
+    Icon: Wallet,
+    anchor: "contribute",
+  },
+  {
     id: "support",
     label: "Other support",
     blurb: "Have another way you would like to help? Say so here.",
@@ -58,6 +65,9 @@ const emptyState = {
   notes: "",
   organisation: "",
   message: "",
+  amount: "",
+  method: "",
+  residency: false,
   interests: [] as string[],
   consent: false,
   permission: false,
@@ -237,12 +247,14 @@ export function GetInvolved() {
                 <Field
                   label="Phone"
                   name="phone"
-                  required={active === "lawn-sign"}
+                  required={active === "lawn-sign" || active === "contribution"}
                   error={errors.phone}
                   hint={
                     active === "lawn-sign"
                       ? "Needed so the sign team can reach you about installation."
-                      : undefined
+                      : active === "contribution"
+                        ? "So the campaign can confirm details with you directly."
+                        : undefined
                   }
                 >
                   {(p) => (
@@ -401,6 +413,107 @@ export function GetInvolved() {
                 </>
               )}
 
+              {/* ---------- Contribution enquiry ----------
+                  This form collects NO payment data: no card numbers, no bank
+                  or account details, no banking credentials. It is an enquiry
+                  that the campaign follows up on manually. */}
+              {active === "contribution" && (
+                <>
+                  <Field
+                    label="Full residential address"
+                    name="address"
+                    required
+                    error={errors.address}
+                    hint="Required to confirm contribution eligibility. Sent only to the campaign."
+                  >
+                    {(p) => (
+                      <input
+                        {...p}
+                        type="text"
+                        autoComplete="street-address"
+                        maxLength={LIMITS.address}
+                        className="field-input"
+                        value={values.address}
+                        onChange={(e) => set("address", e.target.value)}
+                      />
+                    )}
+                  </Field>
+
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field
+                      label="Intended contribution amount"
+                      name="amount"
+                      required
+                      error={errors.amount}
+                      hint="For example: $100. Nothing is charged now."
+                    >
+                      {(p) => (
+                        <input
+                          {...p}
+                          type="text"
+                          inputMode="decimal"
+                          maxLength={LIMITS.amount}
+                          className="field-input"
+                          value={values.amount}
+                          onChange={(e) => set("amount", e.target.value)}
+                        />
+                      )}
+                    </Field>
+
+                    <Field
+                      label="Preferred payment method"
+                      name="method"
+                      required
+                      error={errors.method}
+                    >
+                      {(p) => (
+                        <select
+                          {...p}
+                          className="field-input"
+                          value={values.method}
+                          onChange={(e) => set("method", e.target.value)}
+                        >
+                          <option value="">Choose a method</option>
+                          {PAYMENT_METHODS.map((m) => (
+                            <option key={m} value={m}>
+                              {m}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    </Field>
+                  </div>
+
+                  <Consent
+                    name="residency"
+                    checked={values.residency}
+                    onChange={(v) => set("residency", v)}
+                    error={errors.residency}
+                  >
+                    I confirm that I am an individual normally resident in Ontario.
+                  </Consent>
+
+                  <Field label="Anything else the campaign should know?" name="notes" error={errors.notes}>
+                    {(p) => (
+                      <textarea
+                        {...p}
+                        rows={3}
+                        maxLength={LIMITS.notes}
+                        className="field-input"
+                        value={values.notes}
+                        onChange={(e) => set("notes", e.target.value)}
+                      />
+                    )}
+                  </Field>
+
+                  <p className="border-l-[3px] border-signal bg-white px-3 py-3 text-[0.85rem] leading-relaxed text-navy">
+                    Submitting this form does not process a payment or constitute an official
+                    campaign contribution or receipt. The campaign will contact you with
+                    contribution instructions and confirm eligibility before accepting funds.
+                  </p>
+                </>
+              )}
+
               {/* ---------- Invite / Support ---------- */}
               {(active === "invite" || active === "support") && (
                 <Field
@@ -432,7 +545,9 @@ export function GetInvolved() {
               )}
 
               <Consent checked={values.consent} onChange={(v) => set("consent", v)} error={errors.consent}>
-                I agree the campaign may contact me about what I have asked for here.{" "}
+                {active === "contribution"
+                  ? "I consent to be contacted by the campaign about completing my contribution. "
+                  : "I agree the campaign may contact me about what I have asked for here. "}
                 <Link href="/privacy" className="font-semibold text-civic-deep underline underline-offset-2">
                   How your information is handled
                 </Link>
