@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HousingDisclosure } from "./HousingDisclosure";
+import { PlanDownload } from "./PlanDownload";
 import { Shield, Home, Receipt, Car, Store, Ear } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { campaign } from "@/data/campaign";
@@ -37,6 +38,9 @@ export function Priorities() {
             described plainly, without promising outcomes no single councillor can guarantee.
           </p>
         </div>
+
+        {/* The full plan, offered before the summaries below it. */}
+        <PlanDownload />
 
         {/* Editorial rows */}
         <ol className="mt-12 border-t border-rule">
