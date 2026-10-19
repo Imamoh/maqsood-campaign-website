@@ -148,6 +148,22 @@ export const campaign = {
     "I will remain accessible, listen directly to residents and ensure Ward 14's concerns are heard at City Hall.",
 
   /**
+   * The full written plan, offered as a download at the top of the Priorities
+   * section. The file itself lives at public/documents/my-practical-plan.pdf.
+   * If it is regenerated, update fileLabel so the stated size and page count
+   * stay honest — visitors on mobile data rely on it.
+   */
+  plan: {
+    kicker: "The full plan",
+    title: "My Practical Plan",
+    summary:
+      "Every commitment set out in full — safer city, affordable housing, fair rent for tenants and landlords, and affordable homeownership.",
+    href: "/documents/my-practical-plan.pdf",
+    label: "Read My Practical Plan",
+    fileLabel: "PDF · 23 pages · 676 KB",
+  },
+
+  /**
    * Expandable detail shown inside Priority 02 on the home page.
    * Candidate-approved. Not a separate route or policy page.
    */
